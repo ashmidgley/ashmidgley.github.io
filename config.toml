@@ -1,0 +1,19 @@
+baseURL = "https://ashmidgley.github.io"
+languageCode = "en-us"
+title = "Ash Midgley"
+theme = "cactus"
+publishdir = "./"
+
+[params]
+colortheme = "classic"
+description = "Full stack web developer based in Wellington, New Zealand."
+
+[[menu.main]]
+name = "All posts"
+url = "/posts"
+weight = 1
+
+[[menu.main]]
+name = "About"
+url = "/about"
+weight = 2

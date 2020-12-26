@@ -1,0 +1,9 @@
+{
+    "list": [
+        {
+           "name": "Bookshelf",
+           "url": "https://bookshelf.co.nz",
+           "desc": "An online shelf to keep track of your reads. Built with React and .NET Core."
+        }
+     ]
+}

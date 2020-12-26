@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ash Midgley</title>
+    <link>https://ashmidgley.github.io/</link>
+    <description>Recent content on Ash Midgley</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 26 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://ashmidgley.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Square One</title>
+      <link>https://ashmidgley.github.io/posts/square-one/</link>
+      <pubDate>Sat, 26 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ashmidgley.github.io/posts/square-one/</guid>
+      <description>2020 in a nutshell:
+Weeks worked from office: 12 Weeks worked remotely: 40 Weeks spent in Liverpool: 12 Weeks spent in Yorkshire: 26 Weeks spent in Auckland (isolation): 2 Weeks spent in Wellington: 12 Books read: 22 Festivals attended: 1 Spotify minutes listened: 50,067 Hours spent talking about the &#39;new normal&#39;: 1,426,721 Once again I find myself unemployed and looking for my next role. I&amp;rsquo;m getting an overwhelming sense of déjà vu.</description>
+    </item>
+    
+    <item>
+      <title>Twenty Four</title>
+      <link>https://ashmidgley.github.io/posts/twenty-four/</link>
+      <pubDate>Sat, 07 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ashmidgley.github.io/posts/twenty-four/</guid>
+      <description>Heya how are ya? Okay that&amp;rsquo;s enough out of you. Let&amp;rsquo;s talk about me. November was busy. After months of putting it off I finally refactored my CV. I spent early November eyeing up jobs before passed it out and then DUN DUN DUNNNNN&amp;hellip; interview time. To prepare for these I spent some quality time on Leetcode cracking basic algorithms and rewriting my API tests in nunit.
+In comparison to my graduate level interviews the sessions were a lot more relaxed.</description>
+    </item>
+    
+    <item>
+      <title>C# 7 - the One with Tuples</title>
+      <link>https://ashmidgley.github.io/posts/csharp-7/</link>
+      <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ashmidgley.github.io/posts/csharp-7/</guid>
+      <description>C# 7 is the first version since C# 1 to have minor versions. 7.0 was released in March 2017 with Visual Studio 2017 and was followed by 7.1, 7.2 and 7.3 over the course of the next year and a bit. The big M will probably continue this trend and carry on with minor releases in C# 8 and onwards.
+We&amp;rsquo;ll be finishing off the C# anatomy sessions with tuples, pattern matching and ref-related features.</description>
+    </item>
+    
+    <item>
+      <title>C# 6 - the One with Interpolated Strings</title>
+      <link>https://ashmidgley.github.io/posts/csharp-6/</link>
+      <pubDate>Tue, 29 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ashmidgley.github.io/posts/csharp-6/</guid>
+      <description>C# 6 was released in July 2015 with Visual Studio 2015. It doesn&amp;rsquo;t have one big game-changing feature like 3 with LINQ or 5 with async but it does have a range of features that polish up the dev process. I could have easily done 5 or 6 here but I need to finish season 4 of Archer so we&amp;rsquo;ll just cover interpolated strings, static directives and exception filters.
+Interpolated Strings Interpolated strings are dope.</description>
+    </item>
+    
+    <item>
+      <title>C# 5 - the One with Asynchrony</title>
+      <link>https://ashmidgley.github.io/posts/csharp-5/</link>
+      <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ashmidgley.github.io/posts/csharp-5/</guid>
+      <description>C# 5 was released in August 2012 with Visual Studio 2012. This version came with the async and await keywords to allow you to write asynchronous code. Let&amp;rsquo;s crack on and take a look at asynchrony and a bonus feature called caller information attributes.
+Asynchronous Code Getting ready for work can be broken down into a set of tasks.
+ Shower. Clothes. Coffee. Teeth. Loo. Out the door.  Once you&amp;rsquo;ve done this a few times, you may want to perform these steps asynchronously.</description>
+    </item>
+    
+    <item>
+      <title>C# 4 - the One with Dynamic Typing</title>
+      <link>https://ashmidgley.github.io/posts/csharp-4/</link>
+      <pubDate>Wed, 23 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ashmidgley.github.io/posts/csharp-4/</guid>
+      <description>C# 4 was released in April 2010 with Visual Studio 2010. This release was mainly focused on improving interoperability between systems so many of the features aren&amp;rsquo;t useful on a day-to-day basis. Let&amp;rsquo;s have a geez at dynamic types, optional parameters and named arguments.
+Dynamic Typing Dynamic types change the binding of types from compile time to execution time. We create dynamic types by using the dynamic keyword.
+dynamic text = &amp;quot;Tyler Durden lives.</description>
+    </item>
+    
+    <item>
+      <title>C# 3 - the One with LINQ</title>
+      <link>https://ashmidgley.github.io/posts/csharp-3/</link>
+      <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ashmidgley.github.io/posts/csharp-3/</guid>
+      <description>C# 3 was released in November 2007 with Visual Studio 2008. Pretty much all the features introduced build into LINQ. I can&amp;rsquo;t cover them all so I&amp;rsquo;ll just look to cover implicit typing, object and collection initializers, anonymous types and finish with a quick look at usage of LINQ.
+Implicit Typing Say we have a big ol&#39; Dictionary initialization:
+Dictionary&amp;lt;int, List&amp;lt;string&amp;gt;&amp;gt; mapping = new Dictionary&amp;lt;int, List&amp;lt;string&amp;gt;&amp;gt;();You may be thinking to yourself &amp;ldquo;geez that takes up a load of room&amp;rdquo;.</description>
+    </item>
+    
+    <item>
+      <title>C# 2 - the One with Generics</title>
+      <link>https://ashmidgley.github.io/posts/csharp-2/</link>
+      <pubDate>Sat, 12 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ashmidgley.github.io/posts/csharp-2/</guid>
+      <description>C# 2 was released in November 2005 with Visual Studio 2005. As mentioned previously, I&amp;rsquo;ll just be covering the most useable features so we&amp;rsquo;ll take a look at generics, nullable value types and iterators.
+Generics Prior to C# 2, if we wanted to store values in a dynamic list we had a choice between ArrayList which holds a collection of objects and StringCollection which holds a collection of strings.
+ArrayList list = new ArrayList();list.</description>
+    </item>
+    
+    <item>
+      <title>C# In Depth</title>
+      <link>https://ashmidgley.github.io/posts/csharp-in-depth/</link>
+      <pubDate>Sun, 06 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ashmidgley.github.io/posts/csharp-in-depth/</guid>
+      <description>Yeah, yeah I know it&amp;rsquo;s been a while since my last one. Bite me. I spent the last few weeks reading the fourth edition of C# In Depth by Jon Skeet.
+For those not familiar with C#, I&amp;rsquo;ll give you a short history. It&amp;rsquo;s a programming language that was released sometime in 2000 by Microsoft. It was originally supposed to be called &amp;ldquo;Cool&amp;rdquo; (C-like Object Oriented Language). The creators of Java, which was released in 1994, quickly called C# an imitation of their language.</description>
+    </item>
+    
+    <item>
+      <title>A Curious Moon - Part 2</title>
+      <link>https://ashmidgley.github.io/posts/a-curious-moon-part-2/</link>
+      <pubDate>Wed, 28 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ashmidgley.github.io/posts/a-curious-moon-part-2/</guid>
+      <description>More database stuff. Buckle up. Little hand says it&amp;rsquo;s time to rock and roll.
+Views A stored result set from a query that, once created, you can query just like a normal table. It is a virtual table that is populated dynamically when it is requested by a query.
+ &amp;ldquo;A view is just a projection of data from a source. Nothing is stored anywhere, and every time I query a view I’m actually querying the underlying tables through it.</description>
+    </item>
+    
+    <item>
+      <title>A Curious Moon - Part 1</title>
+      <link>https://ashmidgley.github.io/posts/a-curious-moon-part-1/</link>
+      <pubDate>Wed, 21 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ashmidgley.github.io/posts/a-curious-moon-part-1/</guid>
+      <description>I remember my database paper at uni. It was cool. 1pm lectures, Small data sets and clean input data. &amp;ldquo;I can&amp;rsquo;t wait to start working with some real data in a big application&amp;rdquo; I thought to myself as I walked away from Owheo lab for the last time.
+Fast forward to my first dev job:
+&amp;ldquo;Any idea why SQL Server is down?&amp;rdquo;
+SQL what?
+&amp;ldquo;Just use an aggregate function to get the count of x&amp;rdquo;</description>
+    </item>
+    
+    <item>
+      <title>Pilot</title>
+      <link>https://ashmidgley.github.io/posts/pilot/</link>
+      <pubDate>Sat, 03 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ashmidgley.github.io/posts/pilot/</guid>
+      <description>I&amp;rsquo;ve taken some time off coding. A few months back I quit my job and made the move across to the UK. Since then I&amp;rsquo;ve spent alot of time drinking tea, putting back Curly Wurly&amp;rsquo;s and complaining about the weather. Sadly, funds are starting to run dry. This means it&amp;rsquo;s time to get back on the horse and gradually prepare for programming tests and technical interviews.
+Thinking about revising data structures and algorithms is enough to spark anxiety in the bravest of computer science graduates so I figured writing about what I learn over the next few months will help keep me on track.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://ashmidgley.github.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ashmidgley.github.io/about/</guid>
+      <description>Tech journey so far:
+ 2013: Got dragged along to a Victoria University Robotics club by a good friend. Was fascinated by how the guys could control what the robot was doing by changing a few lines of this strange language called Robot C. Went home and changed my university application from a Commerce degree to Computer Science. 2014: Undergraduate begins. Introductory courses in Python and Java. 2015: Advanced Java + introduction to C.</description>
+    </item>
+    
+  </channel>
+</rss>

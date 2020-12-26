@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> C# 7 - the One with Tuples | Ash Midgley</title>
+  <meta name="description" content="Full stack web developer based in Wellington, New Zealand.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="C# 7 - the One with Tuples" />
+<meta property="og:description" content="C# 7 is the first version since C# 1 to have minor versions. 7.0 was released in March 2017 with Visual Studio 2017 and was followed by 7.1, 7.2 and 7.3 over the course of the next year and a bit. The big M will probably continue this trend and carry on with minor releases in C# 8 and onwards.
+We&rsquo;ll be finishing off the C# anatomy sessions with tuples, pattern matching and ref-related features." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ashmidgley.github.io/posts/csharp-7/" />
+<meta property="article:published_time" content="2019-11-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-11-02T00:00:00+00:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="C# 7 - the One with Tuples"/>
+<meta name="twitter:description" content="C# 7 is the first version since C# 1 to have minor versions. 7.0 was released in March 2017 with Visual Studio 2017 and was followed by 7.1, 7.2 and 7.3 over the course of the next year and a bit. The big M will probably continue this trend and carry on with minor releases in C# 8 and onwards.
+We&rsquo;ll be finishing off the C# anatomy sessions with tuples, pattern matching and ref-related features."/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="https://ashmidgley.github.io/css/style-classic.css">
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="https://ashmidgley.github.io/images/favicon.ico" />
+
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/posts">All posts</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" https://ashmidgley.github.io/posts/csharp-6/">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="https://ashmidgley.github.io/posts/twenty-four/">
+            <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
+          </a>
+        </li>
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fashmidgley.github.io%2fposts%2fcsharp-7%2f">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fashmidgley.github.io%2fposts%2fcsharp-7%2f&text=C%23%207%20-%20the%20One%20with%20Tuples">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fashmidgley.github.io%2fposts%2fcsharp-7%2f&title=C%23%207%20-%20the%20One%20with%20Tuples">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fashmidgley.github.io%2fposts%2fcsharp-7%2f&is_video=false&description=C%23%207%20-%20the%20One%20with%20Tuples">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=C%23%207%20-%20the%20One%20with%20Tuples&body=Check out this article: https%3a%2f%2fashmidgley.github.io%2fposts%2fcsharp-7%2f">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fashmidgley.github.io%2fposts%2fcsharp-7%2f&title=C%23%207%20-%20the%20One%20with%20Tuples">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fashmidgley.github.io%2fposts%2fcsharp-7%2f&title=C%23%207%20-%20the%20One%20with%20Tuples">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.stumbleupon.com/submit?url=https%3a%2f%2fashmidgley.github.io%2fposts%2fcsharp-7%2f&title=C%23%207%20-%20the%20One%20with%20Tuples">
+      <i class="fab fa-stumbleupon " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://digg.com/submit?url=https%3a%2f%2fashmidgley.github.io%2fposts%2fcsharp-7%2f&title=C%23%207%20-%20the%20One%20with%20Tuples">
+      <i class="fab fa-digg " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fashmidgley.github.io%2fposts%2fcsharp-7%2f&name=C%23%207%20-%20the%20One%20with%20Tuples&description=C%23%207%20is%20the%20first%20version%20since%20C%23%201%20to%20have%20minor%20versions.%207.0%20was%20released%20in%20March%202017%20with%20Visual%20Studio%202017%20and%20was%20followed%20by%207.1%2c%207.2%20and%207.3%20over%20the%20course%20of%20the%20next%20year%20and%20a%20bit.%20The%20big%20M%20will%20probably%20continue%20this%20trend%20and%20carry%20on%20with%20minor%20releases%20in%20C%23%208%20and%20onwards.%0aWe%26rsquo%3bll%20be%20finishing%20off%20the%20C%23%20anatomy%20sessions%20with%20tuples%2c%20pattern%20matching%20and%20ref-related%20features.">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fashmidgley.github.io%2fposts%2fcsharp-7%2f&t=C%23%207%20-%20the%20One%20with%20Tuples">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        C# 7 - the One with Tuples
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2019-11-02 00:00:00 &#43;0000 UTC" itemprop="datePublished">2019-11-02</time>
+          
+        </div>
+        
+        
+      </div>
+    </header>
+
+  
+    <div class="content" itemprop="articleBody">
+      <p>C# 7 is the first version since C# 1 to have minor versions. 7.0 was released in March 2017 with Visual Studio 2017 and was followed by 7.1, 7.2 and 7.3 over the course of the next year and a bit. The big M will probably continue this trend and carry on with minor releases in C# 8 and onwards.</p>
+<p>We&rsquo;ll be finishing off the C# anatomy sessions with <strong>tuples</strong>, <strong>pattern matching</strong> and <strong>ref-related features</strong>.</p>
+<h4 id="tuples">Tuples</h4>
+<p>Tuples are bags of variables. You can use them as local variables, you can pass them as arguments, you can return them from methods. I like tuples and I think you will too.</p>
+<p>We create a tuple by wrapping a list of variables in brackets. There are a variety of ways they can be created. All of the below are equivalent.</p>
+<pre><code>var a = 1;
+var b = 2;
+var tuple = (a, b);
+</code></pre><pre><code>(int a, int b) tuple = (1, 2);
+</code></pre><pre><code>var tuple = (a: 1, b: 2);
+</code></pre><p>We can access the variables within tuples in 2 ways. If the variable names are set, we can access using the names.</p>
+<pre><code>Console.WriteLine(tuple.a);
+Console.WriteLine(tuple.b);
+
+// Output
+1
+2
+</code></pre><p>Or we can access using the Item property.</p>
+<pre><code>Console.WriteLine(tuple.Item1);
+Console.WriteLine(tuple.Item2);
+
+// Output
+1
+2
+</code></pre><p>The ability to return tuples from methods is an absolute lifesaver.</p>
+<pre><code>static (int min, int max) MinMax(int[] input)
+{
+    (int Min, int Max) result;
+    // Find and set min and max values.
+    return result;
+}
+</code></pre><p>Version 7.3 introduced support for tuple equality operators. This works by comparing each member of 2 tuples in order.</p>
+<pre><code>var left = (a: 100, b: &quot;text&quot;);
+var right = (x: 100, y: &quot;text&quot;);
+Console.WriteLine(left == right);
+Console.WriteLine(left != right);
+
+// Output
+True
+False
+</code></pre><h4 id="pattern-matching">Pattern Matching</h4>
+<p>We already use <code>if</code> and <code>switch</code> statements to test values. Version 7 sees improvements to the <code>is</code> keyword and <code>switch</code> statements to allow cleaner matching of values.</p>
+<h5 id="using-is">Using Is</h5>
+<p>We use <code>is</code> to test a match.</p>
+<pre><code>if(input is string)
+{
+    Console.WriteLine(&quot;Hooray!&quot;);
+}
+</code></pre><p>The improvements to the <code>is</code> keyword allow us to assign a variable if the match passes.</p>
+<pre><code>if(input is string text)
+{
+    Console.WriteLine(text);
+}
+</code></pre><h5 id="switch-syntax">Switch Syntax</h5>
+<p>The above examples are pretty straightforward. As we add more cases, using <code>if</code> statements becomes tedious. The improvements to switch statements allow us to infer the <code>is</code> clause making them a much better choice for pattern matching. You&rsquo;ll see this in action below.</p>
+<p>There are 3 types of patterns: constant, type and var. Let&rsquo;s take a look.</p>
+<h5 id="constant-patterns">Constant Patterns</h5>
+<p>Does the input match this constant value?</p>
+<pre><code>static string Example(string input)
+{
+    switch(input)
+    {
+        case &quot;hello&quot;:
+            return input;
+        default:
+            return &quot;Input does not match.&quot;
+    }
+}
+</code></pre><h5 id="type-patterns">Type Patterns</h5>
+<p>Of the 3, type matching is probably what you&rsquo;ll see the most of. Does the input match this type?</p>
+<pre><code>static string Example(object input)
+{
+    switch(input)
+    {
+        case string text:
+            return text;
+        default:
+            throw new ArgumentException(&quot;Input is unexpected type.&quot;);
+    }
+}
+</code></pre><h5 id="var-patterns">Var Patterns</h5>
+<p>Var patterns are pretty weird. Unlike the other patterns it always matches. This allows you to work with the initial object. For example, say we want a case to handle null values, empty strings and strings which are only white space.</p>
+<pre><code>static void string Example(string input)
+{
+    switch(input)
+    {
+        case &quot;hello&quot;:
+            return input;
+        case var obj when (obj?.Trim().Length ?? 0) == 0:
+            return null;
+        default:
+            return &quot;Invalid input string.&quot;;
+    }
+}
+</code></pre><h4 id="ref-related-features">Ref-related Features</h4>
+<p>First let&rsquo;s quickly backtrack and look at the usage of <code>ref</code> prior to this release. Up to this point you could use the <code>ref</code> keyword before a parameter to pass a reference into a method.</p>
+<p>Let&rsquo;s say we want to sort an array.</p>
+<pre><code>static int[] NormalSort(int[] input)
+{
+    // Sort input.
+    return input;
+}
+
+var input = new int[] { 1,5,2,4,3 };
+var result = NormalSort(input);
+</code></pre><p>Here we create a new variable to store the returned value. This is great if we plan to re-use <code>input</code> further down our code.</p>
+<p>In comparison we can do the same using reference passing.</p>
+<pre><code>static void RefSort(ref int[] input)
+{
+    // Sort input.
+}
+
+var input = new int[] { 1,5,2,4,3 };
+RefSort(ref input);
+</code></pre><p>There is no new variable created. The sort method applies it&rsquo;s operations directly to <code>input</code>. If we don&rsquo;t plan on using our <code>input</code> again, this method is more memory efficient.</p>
+<p>If we compare result and input after running RefSort we get the <a href="https://github.com/ashmidgley/csharp-in-depth/blob/master/Tests/C%23-7/RefTests.cs">same result</a>.</p>
+<pre><code>[ 1, 2, 3, 4, 5]
+</code></pre><p>Now that we have an idea of how reference passing works with methods lets take a look at ref local variables and ref returns introduced in C# 7.</p>
+<h5 id="local-variable">Local Variable</h5>
+<p>Say we have an array of tuple elements. We want to change the values for element i. We could do it like this:</p>
+<pre><code>array[i].min++;
+array[i].max--;
+</code></pre><p>Or like this:</p>
+<pre><code>var tuple = array[i];
+tuple.min++;
+tuple.max--;
+array[i] = tuple;
+</code></pre><p>But to be honest with you, both of these are pretty slimy. We can do the same using a ref local variable:</p>
+<pre><code>ref var tuple = ref array[i];
+tuple.min++;
+tuple.max--;
+</code></pre><p>Of the above I think the bottom gives you the most bang for your buck in terms of readability because it clearly shows that the array element being updated is a tuple.</p>
+<h5 id="ref-return">Ref Return</h5>
+<p>Below we see an indexer returning the element of the classes array by reference.</p>
+<pre><code>class Example
+{
+    private int[] array = new int[10];
+
+    public ref int this[int index]
+    {
+        get 
+        {
+            return ref array[index];
+        }
+    }
+}
+</code></pre><p>We return the index as a reference to the original array so that any updates to it will directly reflect on the array.</p>
+<pre><code>Example example = new Example();
+ref int elementOne = ref example[0];
+ref int elementOneAswell = ref example[0];
+
+elementOne = 100;
+Console.WriteLine(elementOneAswell);
+
+// Output
+100
+</code></pre><p>You might notice that ref returns require you to throw refs left right and center. Hopefully by the time I get around to using them (2050?) the syntax will have been cleaned up a bit.</p>
+<p>These features were introduced to improve memory efficiency. I&rsquo;ll mention that you probably won&rsquo;t come across many ref-related features at the mo unless you&rsquo;re working with a real-time system. Despite this, Jon mentioned that you&rsquo;ll probably reap benefits from them anyway because it means other features in the framework can be re-written to work more efficiently.</p>
+<h4 id="end">End</h4>
+<p>That&rsquo;s a wrap on C# and Fight Club references for now. I&rsquo;ve only really scratched the surface of what Jon covers so if you&rsquo;re after more features and much more detail grab a copy <a href="https://www.manning.com/books/c-sharp-in-depth-fourth-edition">here</a>. I haven&rsquo;t had a chance to take a proper look into C# 8 yet but a quick scan of the Microsoft <a href="https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8">docs</a> looks promising.</p>
+<p>Cheers for reading! Now piss off and go write some programs in C#.</p>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/posts">All posts</a></li>
+         
+          <li><a href="/about">About</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fashmidgley.github.io%2fposts%2fcsharp-7%2f">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fashmidgley.github.io%2fposts%2fcsharp-7%2f&text=C%23%207%20-%20the%20One%20with%20Tuples">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fashmidgley.github.io%2fposts%2fcsharp-7%2f&title=C%23%207%20-%20the%20One%20with%20Tuples">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fashmidgley.github.io%2fposts%2fcsharp-7%2f&is_video=false&description=C%23%207%20-%20the%20One%20with%20Tuples">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=C%23%207%20-%20the%20One%20with%20Tuples&body=Check out this article: https%3a%2f%2fashmidgley.github.io%2fposts%2fcsharp-7%2f">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fashmidgley.github.io%2fposts%2fcsharp-7%2f&title=C%23%207%20-%20the%20One%20with%20Tuples">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fashmidgley.github.io%2fposts%2fcsharp-7%2f&title=C%23%207%20-%20the%20One%20with%20Tuples">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.stumbleupon.com/submit?url=https%3a%2f%2fashmidgley.github.io%2fposts%2fcsharp-7%2f&title=C%23%207%20-%20the%20One%20with%20Tuples">
+      <i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://digg.com/submit?url=https%3a%2f%2fashmidgley.github.io%2fposts%2fcsharp-7%2f&title=C%23%207%20-%20the%20One%20with%20Tuples">
+      <i class="fab fa-digg fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fashmidgley.github.io%2fposts%2fcsharp-7%2f&name=C%23%207%20-%20the%20One%20with%20Tuples&description=C%23%207%20is%20the%20first%20version%20since%20C%23%201%20to%20have%20minor%20versions.%207.0%20was%20released%20in%20March%202017%20with%20Visual%20Studio%202017%20and%20was%20followed%20by%207.1%2c%207.2%20and%207.3%20over%20the%20course%20of%20the%20next%20year%20and%20a%20bit.%20The%20big%20M%20will%20probably%20continue%20this%20trend%20and%20carry%20on%20with%20minor%20releases%20in%20C%23%208%20and%20onwards.%0aWe%26rsquo%3bll%20be%20finishing%20off%20the%20C%23%20anatomy%20sessions%20with%20tuples%2c%20pattern%20matching%20and%20ref-related%20features.">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fashmidgley.github.io%2fposts%2fcsharp-7%2f&t=C%23%207%20-%20the%20One%20with%20Tuples">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2020  Ash Midgley 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/posts">All posts</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+
+
+</html>
